@@ -1,0 +1,365 @@
+INFO:Detectors:
+MondrianWallet2._executeTransaction(Transaction) (src/MondrianWallet2.sol#149-164) sends eth to arbitrary user
+        Dangerous calls:
+        - (success,None) = to.call{value: value}(data) (src/MondrianWallet2.sol#159)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+INFO:Detectors:
+Math.mulDiv(uint256,uint256,uint256) (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#123-202) has bitwise-xor operator ^ instead of the exponentiation operator **:
+         - inverse = (3 * denominator) ^ 2 (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#184)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-exponentiation
+INFO:Detectors:
+Math.mulDiv(uint256,uint256,uint256) (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#123-202) performs a multiplication on the result of a division:
+        - denominator = denominator / twos (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#169)
+        - inverse = (3 * denominator) ^ 2 (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#184)
+Math.mulDiv(uint256,uint256,uint256) (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#123-202) performs a multiplication on the result of a division:
+        - denominator = denominator / twos (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#169)
+        - inverse *= 2 - denominator * inverse (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#188)
+Math.mulDiv(uint256,uint256,uint256) (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#123-202) performs a multiplication on the result of a division:
+        - denominator = denominator / twos (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#169)
+        - inverse *= 2 - denominator * inverse (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#189)
+Math.mulDiv(uint256,uint256,uint256) (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#123-202) performs a multiplication on the result of a division:
+        - denominator = denominator / twos (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#169)
+        - inverse *= 2 - denominator * inverse (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#190)
+Math.mulDiv(uint256,uint256,uint256) (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#123-202) performs a multiplication on the result of a division:
+        - denominator = denominator / twos (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#169)
+        - inverse *= 2 - denominator * inverse (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#191)
+Math.mulDiv(uint256,uint256,uint256) (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#123-202) performs a multiplication on the result of a division:
+        - denominator = denominator / twos (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#169)
+        - inverse *= 2 - denominator * inverse (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#192)
+Math.mulDiv(uint256,uint256,uint256) (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#123-202) performs a multiplication on the result of a division:
+        - denominator = denominator / twos (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#169)
+        - inverse *= 2 - denominator * inverse (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#193)
+Math.mulDiv(uint256,uint256,uint256) (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#123-202) performs a multiplication on the result of a division:
+        - prod0 = prod0 / twos (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#172)
+        - result = prod0 * inverse (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#199)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+INFO:Detectors:
+MemoryTransactionHelper._encodeHashEIP1559Transaction(Transaction).encodedDataLength (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/MemoryTransactionHelper.sol#319) is a local variable never initialized
+MemoryTransactionHelper._encodeHashEIP2930Transaction(Transaction).encodedDataLength (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/MemoryTransactionHelper.sol#249) is a local variable never initialized
+MemoryTransactionHelper._encodeHashLegacyTransaction(Transaction).encodedDataLength (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/MemoryTransactionHelper.sol#183) is a local variable never initialized
+MemoryTransactionHelper._encodeHashLegacyTransaction(Transaction).encodedChainId (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/MemoryTransactionHelper.sol#198) is a local variable never initialized
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-local-variables
+INFO:Detectors:
+ERC1967Utils.upgradeToAndCall(address,bytes) (lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Utils.sol#83-92) ignores return value by Address.functionDelegateCall(newImplementation,data) (lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Utils.sol#88)
+ERC1967Utils.upgradeBeaconToAndCall(address,bytes) (lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Utils.sol#173-182) ignores return value by Address.functionDelegateCall(IBeacon(newBeacon).implementation(),data) (lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Utils.sol#178)
+MondrianWallet2._validateTransaction(Transaction) (src/MondrianWallet2.sol#123-147) ignores return value by SystemContractsCaller.systemCallWithPropagatedRevert(uint32(gasleft()()),address(NONCE_HOLDER_SYSTEM_CONTRACT),0,abi.encodeCall(INonceHolder.incrementMinNonceIfEquals,(_transaction.nonce))) (src/MondrianWallet2.sol#124-129)
+MondrianWallet2._executeTransaction(Transaction) (src/MondrianWallet2.sol#149-164) ignores return value by SystemContractsCaller.systemCallWithPropagatedRevert(gas,to,value,data) (src/MondrianWallet2.sol#156)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-return
+INFO:Detectors:
+EfficientCall.rawCall(uint256,address,uint256,bytes,bool) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#124-152) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#135-137)
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#148-150)
+EfficientCall.rawStaticCall(uint256,address,bytes) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#159-166) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#163-165)
+EfficientCall.rawDelegateCall(uint256,address,bytes) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#173-180) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#177-179)
+EfficientCall.rawMimicCall(uint256,address,bytes,address,bool,bool) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#191-210) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#203-209)
+EfficientCall._verifyCallResult(bool) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#215-229) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#218-220)
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#223-225)
+EfficientCall.propagateRevert() (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#232-238) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#233-237)
+EfficientCall._loadFarCallABIIntoActivePtr(uint256,bytes,bool,bool) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#245-274) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#254-256)
+MemoryTransactionHelper.payToTheBootloader(Transaction) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/MemoryTransactionHelper.sol#560-567) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/MemoryTransactionHelper.sol#564-566)
+RLPEncoder.encodeAddress(address) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/RLPEncoder.sol#11-22) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/RLPEncoder.sol#16-21)
+RLPEncoder.encodeUint256(uint256) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/RLPEncoder.sol#24-44) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/RLPEncoder.sol#39-41)
+RLPEncoder._encodeLength(uint64,uint256) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/RLPEncoder.sol#60-79) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/RLPEncoder.sol#74-76)
+SystemContractHelper.toL1(bool,bytes32,bytes32) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#48-57) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#50-56)
+SystemContractHelper.getCodeAddress() (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#63-68) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#65-67)
+SystemContractHelper.loadCalldataIntoActivePtr() (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#74-79) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#76-78)
+SystemContractHelper.ptrPackIntoActivePtr(uint256) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#85-90) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#87-89)
+SystemContractHelper.ptrAddIntoActive(uint32) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#94-102) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#97-101)
+SystemContractHelper.ptrShrinkIntoActive(uint32) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#106-114) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#109-113)
+SystemContractHelper.unsafePrecompileCall(uint256,uint32) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#148-157) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#152-156)
+SystemContractHelper.setValueForNextFarCall(uint128) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#162-170) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#165-169)
+SystemContractHelper.eventInitialize(uint256,uint256) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#175-180) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#177-179)
+SystemContractHelper.eventWrite(uint256,uint256) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#185-190) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#187-189)
+SystemContractHelper.getZkSyncMetaBytes() (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#196-201) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#198-200)
+SystemContractHelper.getCallFlags() (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#287-292) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#289-291)
+SystemContractHelper.getCalldataPtr() (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#298-303) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#300-302)
+SystemContractHelper.getExtraAbiData(uint256) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#309-316) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#313-315)
+SystemContractsCaller.systemCall(uint32,address,uint256,bytes) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractsCaller.sol#76-113) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractsCaller.sol#80-82)
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractsCaller.sol#100-102)
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractsCaller.sol#109-111)
+SystemContractsCaller.systemCallWithReturndata(uint32,address,uint128,bytes) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractsCaller.sol#123-140) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractsCaller.sol#132-134)
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractsCaller.sol#137-139)
+SystemContractsCaller.systemCallWithPropagatedRevert(uint32,address,uint128,bytes) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractsCaller.sol#150-165) uses assembly
+        - INLINE ASM (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractsCaller.sol#160-163)
+OwnableUpgradeable._getOwnableStorage() (lib/openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol#30-34) uses assembly
+        - INLINE ASM (lib/openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol#31-33)
+Initializable._getInitializableStorage() (lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol#223-227) uses assembly
+        - INLINE ASM (lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol#224-226)
+Address._revert(bytes) (lib/openzeppelin-contracts/contracts/utils/Address.sol#146-158) uses assembly
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/Address.sol#151-154)
+StorageSlot.getAddressSlot(bytes32) (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#59-64) uses assembly
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#61-63)
+StorageSlot.getBooleanSlot(bytes32) (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#69-74) uses assembly
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#71-73)
+StorageSlot.getBytes32Slot(bytes32) (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#79-84) uses assembly
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#81-83)
+StorageSlot.getUint256Slot(bytes32) (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#89-94) uses assembly
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#91-93)
+StorageSlot.getStringSlot(bytes32) (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#99-104) uses assembly
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#101-103)
+StorageSlot.getStringSlot(string) (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#109-114) uses assembly
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#111-113)
+StorageSlot.getBytesSlot(bytes32) (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#119-124) uses assembly
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#121-123)
+StorageSlot.getBytesSlot(bytes) (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#129-134) uses assembly
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#131-133)
+Strings.toString(uint256) (lib/openzeppelin-contracts/contracts/utils/Strings.sol#24-44) uses assembly
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/Strings.sol#30-32)
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/Strings.sol#36-38)
+ECDSA.tryRecover(bytes32,bytes) (lib/openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol#56-73) uses assembly
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol#64-68)
+MessageHashUtils.toEthSignedMessageHash(bytes32) (lib/openzeppelin-contracts/contracts/utils/cryptography/MessageHashUtils.sol#30-37) uses assembly
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/cryptography/MessageHashUtils.sol#32-36)
+MessageHashUtils.toTypedDataHash(bytes32,bytes32) (lib/openzeppelin-contracts/contracts/utils/cryptography/MessageHashUtils.sol#76-85) uses assembly
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/cryptography/MessageHashUtils.sol#78-84)
+Math.mulDiv(uint256,uint256,uint256) (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#123-202) uses assembly
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#130-133)
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#154-161)
+        - INLINE ASM (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#167-176)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+INFO:Detectors:
+3 different versions of Solidity are used:
+        - Version constraint ^0.8.20 is used by:
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/Constants.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IAccount.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IAccountCodeStorage.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IBootloaderUtilities.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IComplexUpgrader.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/ICompressor.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IContractDeployer.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IEthToken.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IImmutableSimulator.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IKnownCodesStorage.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IL1Messenger.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/INonceHolder.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IPaymasterFlow.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IPubdataChunkPublisher.sol#2)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/ISystemContext.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/RLPEncoder.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractsCaller.sol#3)
+                -^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#2)
+                -^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol#4)
+                -^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol#4)
+                -^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/UUPSUpgradeable.sol#4)
+                -^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/utils/ContextUpgradeable.sol#4)
+                -^0.8.20 (lib/openzeppelin-contracts/contracts/interfaces/draft-IERC1822.sol#4)
+                -^0.8.20 (lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Utils.sol#4)
+                -^0.8.20 (lib/openzeppelin-contracts/contracts/proxy/beacon/IBeacon.sol#4)
+                -^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol#4)
+                -^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Permit.sol#4)
+                -^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol#4)
+                -^0.8.20 (lib/openzeppelin-contracts/contracts/utils/Address.sol#4)
+                -^0.8.20 (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#5)
+                -^0.8.20 (lib/openzeppelin-contracts/contracts/utils/Strings.sol#4)
+                -^0.8.20 (lib/openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol#4)
+                -^0.8.20 (lib/openzeppelin-contracts/contracts/utils/cryptography/MessageHashUtils.sol#4)
+                -^0.8.20 (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#4)
+                -^0.8.20 (lib/openzeppelin-contracts/contracts/utils/math/SignedMath.sol#4)
+        - Version constraint ^0.8.0 is used by:
+                -^0.8.0 (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/MemoryTransactionHelper.sol#3)
+        - Version constraint 0.8.24 is used by:
+                -0.8.24 (src/MondrianWallet2.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#different-pragma-directives-are-used
+INFO:Detectors:
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+        - VerbatimInvalidDeduplication
+        - FullInlinerNonExpressionSplitArgumentEvaluationOrder
+        - MissingSideEffectsOnSelectorAccess.
+It is used by:
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/Constants.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IAccount.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IAccountCodeStorage.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IBootloaderUtilities.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IComplexUpgrader.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/ICompressor.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IContractDeployer.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IEthToken.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IImmutableSimulator.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IKnownCodesStorage.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IL1Messenger.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/INonceHolder.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IPaymasterFlow.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/IPubdataChunkPublisher.sol#2)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/interfaces/ISystemContext.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/RLPEncoder.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractsCaller.sol#3)
+        - ^0.8.20 (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#2)
+        - ^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol#4)
+        - ^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol#4)
+        - ^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/UUPSUpgradeable.sol#4)
+        - ^0.8.20 (lib/openzeppelin-contracts-upgradeable/contracts/utils/ContextUpgradeable.sol#4)
+        - ^0.8.20 (lib/openzeppelin-contracts/contracts/interfaces/draft-IERC1822.sol#4)
+        - ^0.8.20 (lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Utils.sol#4)
+        - ^0.8.20 (lib/openzeppelin-contracts/contracts/proxy/beacon/IBeacon.sol#4)
+        - ^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol#4)
+        - ^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Permit.sol#4)
+        - ^0.8.20 (lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol#4)
+        - ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/Address.sol#4)
+        - ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol#5)
+        - ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/Strings.sol#4)
+        - ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol#4)
+        - ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/cryptography/MessageHashUtils.sol#4)
+        - ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/math/Math.sol#4)
+        - ^0.8.20 (lib/openzeppelin-contracts/contracts/utils/math/SignedMath.sol#4)
+Version constraint ^0.8.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+        - FullInlinerNonExpressionSplitArgumentEvaluationOrder
+        - MissingSideEffectsOnSelectorAccess
+        - AbiReencodingHeadOverflowWithStaticArrayCleanup
+        - DirtyBytesArrayToStorage
+        - DataLocationChangeInInternalOverride
+        - NestedCalldataArrayAbiReencodingSizeValidation
+        - SignedImmutables
+        - ABIDecodeTwoDimensionalArrayMemory
+        - KeccakCaching.
+It is used by:
+        - ^0.8.0 (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/MemoryTransactionHelper.sol#3)
+Version constraint 0.8.24 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+.
+It is used by:
+        - 0.8.24 (src/MondrianWallet2.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in SafeERC20._callOptionalReturnBool(IERC20,bytes) (lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol#110-117):
+        - (success,returndata) = address(token).call(data) (lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol#115)
+Low level call in Address.sendValue(address,uint256) (lib/openzeppelin-contracts/contracts/utils/Address.sol#41-50):
+        - (success,None) = recipient.call{value: amount}() (lib/openzeppelin-contracts/contracts/utils/Address.sol#46)
+Low level call in Address.functionCallWithValue(address,bytes,uint256) (lib/openzeppelin-contracts/contracts/utils/Address.sol#83-89):
+        - (success,returndata) = target.call{value: value}(data) (lib/openzeppelin-contracts/contracts/utils/Address.sol#87)
+Low level call in Address.functionStaticCall(address,bytes) (lib/openzeppelin-contracts/contracts/utils/Address.sol#95-98):
+        - (success,returndata) = target.staticcall(data) (lib/openzeppelin-contracts/contracts/utils/Address.sol#96)
+Low level call in Address.functionDelegateCall(address,bytes) (lib/openzeppelin-contracts/contracts/utils/Address.sol#104-107):
+        - (success,returndata) = target.delegatecall(data) (lib/openzeppelin-contracts/contracts/utils/Address.sol#105)
+Low level call in MondrianWallet2._executeTransaction(Transaction) (src/MondrianWallet2.sol#149-164):
+        - (success,None) = to.call{value: value}(data) (src/MondrianWallet2.sol#159)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter EfficientCall.keccak(bytes)._data (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#36) is not in mixedCase
+Parameter EfficientCall.sha(bytes)._data (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#45) is not in mixedCase
+Parameter EfficientCall.call(uint256,address,uint256,bytes,bool)._gas (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#59) is not in mixedCase
+Parameter EfficientCall.call(uint256,address,uint256,bytes,bool)._address (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#60) is not in mixedCase
+Parameter EfficientCall.call(uint256,address,uint256,bytes,bool)._value (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#61) is not in mixedCase
+Parameter EfficientCall.call(uint256,address,uint256,bytes,bool)._data (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#62) is not in mixedCase
+Parameter EfficientCall.call(uint256,address,uint256,bytes,bool)._isSystem (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#63) is not in mixedCase
+Parameter EfficientCall.staticCall(uint256,address,bytes)._gas (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#75) is not in mixedCase
+Parameter EfficientCall.staticCall(uint256,address,bytes)._address (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#76) is not in mixedCase
+Parameter EfficientCall.staticCall(uint256,address,bytes)._data (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#77) is not in mixedCase
+Parameter EfficientCall.delegateCall(uint256,address,bytes)._gas (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#89) is not in mixedCase
+Parameter EfficientCall.delegateCall(uint256,address,bytes)._address (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#90) is not in mixedCase
+Parameter EfficientCall.delegateCall(uint256,address,bytes)._data (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#91) is not in mixedCase
+Parameter EfficientCall.mimicCall(uint256,address,bytes,address,bool,bool)._gas (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#106) is not in mixedCase
+Parameter EfficientCall.mimicCall(uint256,address,bytes,address,bool,bool)._address (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#107) is not in mixedCase
+Parameter EfficientCall.mimicCall(uint256,address,bytes,address,bool,bool)._data (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#108) is not in mixedCase
+Parameter EfficientCall.mimicCall(uint256,address,bytes,address,bool,bool)._whoToMimic (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#109) is not in mixedCase
+Parameter EfficientCall.mimicCall(uint256,address,bytes,address,bool,bool)._isConstructor (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#110) is not in mixedCase
+Parameter EfficientCall.mimicCall(uint256,address,bytes,address,bool,bool)._isSystem (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#111) is not in mixedCase
+Parameter EfficientCall.rawCall(uint256,address,uint256,bytes,bool)._gas (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#125) is not in mixedCase
+Parameter EfficientCall.rawCall(uint256,address,uint256,bytes,bool)._address (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#126) is not in mixedCase
+Parameter EfficientCall.rawCall(uint256,address,uint256,bytes,bool)._value (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#127) is not in mixedCase
+Parameter EfficientCall.rawCall(uint256,address,uint256,bytes,bool)._data (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#128) is not in mixedCase
+Parameter EfficientCall.rawCall(uint256,address,uint256,bytes,bool)._isSystem (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#129) is not in mixedCase
+Parameter EfficientCall.rawStaticCall(uint256,address,bytes)._gas (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#159) is not in mixedCase
+Parameter EfficientCall.rawStaticCall(uint256,address,bytes)._address (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#159) is not in mixedCase
+Parameter EfficientCall.rawStaticCall(uint256,address,bytes)._data (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#159) is not in mixedCase
+Parameter EfficientCall.rawDelegateCall(uint256,address,bytes)._gas (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#173) is not in mixedCase
+Parameter EfficientCall.rawDelegateCall(uint256,address,bytes)._address (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#173) is not in mixedCase
+Parameter EfficientCall.rawDelegateCall(uint256,address,bytes)._data (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#173) is not in mixedCase
+Parameter EfficientCall.rawMimicCall(uint256,address,bytes,address,bool,bool)._gas (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#192) is not in mixedCase
+Parameter EfficientCall.rawMimicCall(uint256,address,bytes,address,bool,bool)._address (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#193) is not in mixedCase
+Parameter EfficientCall.rawMimicCall(uint256,address,bytes,address,bool,bool)._data (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#194) is not in mixedCase
+Parameter EfficientCall.rawMimicCall(uint256,address,bytes,address,bool,bool)._whoToMimic (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#195) is not in mixedCase
+Parameter EfficientCall.rawMimicCall(uint256,address,bytes,address,bool,bool)._isConstructor (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#196) is not in mixedCase
+Parameter EfficientCall.rawMimicCall(uint256,address,bytes,address,bool,bool)._isSystem (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/EfficientCall.sol#197) is not in mixedCase
+Parameter MemoryTransactionHelper.isEthToken(uint256)._addr (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/MemoryTransactionHelper.sol#107) is not in mixedCase
+Parameter MemoryTransactionHelper.encodeHash(Transaction)._transaction (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/MemoryTransactionHelper.sol#113) is not in mixedCase
+Parameter MemoryTransactionHelper.processPaymasterInput(Transaction)._transaction (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/MemoryTransactionHelper.sol#360) is not in mixedCase
+Parameter MemoryTransactionHelper.payToTheBootloader(Transaction)._transaction (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/MemoryTransactionHelper.sol#560) is not in mixedCase
+Parameter MemoryTransactionHelper.totalRequiredBalance(Transaction)._transaction (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/MemoryTransactionHelper.sol#570) is not in mixedCase
+Parameter RLPEncoder.encodeAddress(address)._val (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/RLPEncoder.sol#11) is not in mixedCase
+Parameter RLPEncoder.encodeUint256(uint256)._val (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/RLPEncoder.sol#24) is not in mixedCase
+Parameter RLPEncoder.encodeNonSingleBytesLen(uint64)._len (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/RLPEncoder.sol#49) is not in mixedCase
+Parameter RLPEncoder.encodeListLen(uint64)._len (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/RLPEncoder.sol#56) is not in mixedCase
+Parameter SystemContractHelper.toL1(bool,bytes32,bytes32)._isService (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#48) is not in mixedCase
+Parameter SystemContractHelper.toL1(bool,bytes32,bytes32)._key (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#48) is not in mixedCase
+Parameter SystemContractHelper.toL1(bool,bytes32,bytes32)._value (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#48) is not in mixedCase
+Parameter SystemContractHelper.ptrPackIntoActivePtr(uint256)._farCallAbi (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#85) is not in mixedCase
+Parameter SystemContractHelper.ptrAddIntoActive(uint32)._value (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#94) is not in mixedCase
+Parameter SystemContractHelper.ptrShrinkIntoActive(uint32)._shrink (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#106) is not in mixedCase
+Parameter SystemContractHelper.packPrecompileParams(uint32,uint32,uint32,uint32,uint64)._inputMemoryOffset (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#125) is not in mixedCase
+Parameter SystemContractHelper.packPrecompileParams(uint32,uint32,uint32,uint32,uint64)._inputMemoryLength (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#126) is not in mixedCase
+Parameter SystemContractHelper.packPrecompileParams(uint32,uint32,uint32,uint32,uint64)._outputMemoryOffset (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#127) is not in mixedCase
+Parameter SystemContractHelper.packPrecompileParams(uint32,uint32,uint32,uint32,uint64)._outputMemoryLength (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#128) is not in mixedCase
+Parameter SystemContractHelper.packPrecompileParams(uint32,uint32,uint32,uint32,uint64)._perPrecompileInterpreted (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#129) is not in mixedCase
+Parameter SystemContractHelper.unsafePrecompileCall(uint256,uint32)._rawParams (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#148) is not in mixedCase
+Parameter SystemContractHelper.unsafePrecompileCall(uint256,uint32)._gasToBurn (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#148) is not in mixedCase
+Parameter SystemContractHelper.setValueForNextFarCall(uint128)._value (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#162) is not in mixedCase
+Parameter SystemContractHelper.isSystemContract(address)._address (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#329) is not in mixedCase
+Parameter SystemContractHelper.burnGas(uint32)._gasToPay (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/SystemContractHelper.sol#335) is not in mixedCase
+Parameter Utils.safeCastToU128(uint256)._x (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#20) is not in mixedCase
+Parameter Utils.safeCastToU32(uint256)._x (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#26) is not in mixedCase
+Parameter Utils.safeCastToU24(uint256)._x (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#32) is not in mixedCase
+Parameter Utils.bytecodeLenInBytes(bytes32)._bytecodeHash (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#39) is not in mixedCase
+Parameter Utils.bytecodeLenInWords(bytes32)._bytecodeHash (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#44) is not in mixedCase
+Parameter Utils.isContractConstructed(bytes32)._bytecodeHash (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#51) is not in mixedCase
+Parameter Utils.isContractConstructing(bytes32)._bytecodeHash (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#56) is not in mixedCase
+Parameter Utils.constructingBytecodeHash(bytes32)._bytecodeHash (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#63) is not in mixedCase
+Parameter Utils.constructedBytecodeHash(bytes32)._bytecodeHash (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#71) is not in mixedCase
+Parameter Utils.hashL2Bytecode(bytes)._bytecode (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#82) is not in mixedCase
+Function OwnableUpgradeable.__Ownable_init(address) (lib/openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol#51-53) is not in mixedCase
+Function OwnableUpgradeable.__Ownable_init_unchained(address) (lib/openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol#55-60) is not in mixedCase
+Constant OwnableUpgradeable.OwnableStorageLocation (lib/openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol#28) is not in UPPER_CASE_WITH_UNDERSCORES
+Function UUPSUpgradeable.__UUPSUpgradeable_init() (lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/UUPSUpgradeable.sol#65-66) is not in mixedCase
+Function UUPSUpgradeable.__UUPSUpgradeable_init_unchained() (lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/UUPSUpgradeable.sol#68-69) is not in mixedCase
+Variable UUPSUpgradeable.__self (lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/UUPSUpgradeable.sol#22) is not in mixedCase
+Function ContextUpgradeable.__Context_init() (lib/openzeppelin-contracts-upgradeable/contracts/utils/ContextUpgradeable.sol#18-19) is not in mixedCase
+Function ContextUpgradeable.__Context_init_unchained() (lib/openzeppelin-contracts-upgradeable/contracts/utils/ContextUpgradeable.sol#21-22) is not in mixedCase
+Function IERC20Permit.DOMAIN_SEPARATOR() (lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Permit.sol#89) is not in mixedCase
+Parameter MondrianWallet2.validateTransaction(bytes32,bytes32,Transaction)._transaction (src/MondrianWallet2.sol#79) is not in mixedCase
+Parameter MondrianWallet2.executeTransaction(bytes32,bytes32,Transaction)._transaction (src/MondrianWallet2.sol#88) is not in mixedCase
+Parameter MondrianWallet2.executeTransactionFromOutside(Transaction)._transaction (src/MondrianWallet2.sol#96) is not in mixedCase
+Parameter MondrianWallet2.payForTransaction(bytes32,bytes32,Transaction)._transaction (src/MondrianWallet2.sol#101) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+RLPEncoder.encodeAddress(address) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/RLPEncoder.sol#11-22) uses literals with too many digits:
+        - mstore(uint256,uint256)(encoded + 0x20,0x9400000000000000000000000000000000000000000000000000000000000000) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/RLPEncoder.sol#18)
+Utils.hashL2Bytecode(bytes) (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#82-96) uses literals with too many digits:
+        - hashedBytecode = EfficientCall.sha(_bytecode) & 0x00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#89-91)
+Utils.slitherConstructorConstantVariables() (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#11-97) uses literals with too many digits:
+        - IS_CONSTRUCTOR_BYTECODE_HASH_BIT_MASK = 0x00ff000000000000000000000000000000000000000000000000000000000000 (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#13-14)
+Utils.slitherConstructorConstantVariables() (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#11-97) uses literals with too many digits:
+        - SET_IS_CONSTRUCTOR_MARKER_BIT_MASK = 0x0001000000000000000000000000000000000000000000000000000000000000 (lib/foundry-era-contracts/src/system-contracts/contracts/libraries/Utils.sol#17-18)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+INFO:Detectors:
+The following unused import(s) in src/MondrianWallet2.sol should be removed:
+        -import {MessageHashUtils} from "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol"; (src/MondrianWallet2.sol#24)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-imports
+INFO:Slither:. analyzed (38 contracts with 94 detectors), 161 result(s) found
